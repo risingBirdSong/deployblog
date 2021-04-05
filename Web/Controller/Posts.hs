@@ -36,7 +36,7 @@ instance Controller PostsController where
                 Right post -> do
                     post <- post |> updateRecord
                     setSuccessMessage "Post updated"
-                    redirectTo EditPostAction { .. }
+                    redirectTo $ ShowPostAction (get #id post)
 
     action CreatePostAction = do
         let post = newRecord @Post
